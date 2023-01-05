@@ -8,7 +8,7 @@ export default function SignIn(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const {signIn} = useContext(AuthContext);
+    const {signIn,loadingAuth} = useContext(AuthContext);
 
     function handleSignIn(e){
         e.preventDefault();
@@ -31,7 +31,9 @@ export default function SignIn(){
                     <h1>SignIn</h1>
                     <input type="text" placeholder="E-mail" value={email} onChange={(e)=>setEmail(e.target.value)}/>
                     <input type="password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
-                    <button  type='submit'>Access</button>
+                    <button  type='submit'>
+                        {loadingAuth ? 'Loading...' : 'Create account'}
+                    </button>
                 </form>
 
                 <Link to='/register'>Create a new account</Link>
