@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 import {Link} from 'react-router-dom';
-import logo from '../../assets/logo.png'
+import logo from '../../assets/logo.png';
+import { AuthContext } from '../../contexts/auth';
 
 
 export default function SignUp(){
@@ -8,11 +9,13 @@ export default function SignUp(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    function handleSignUp(e){
+    const {signUp,loadingAuth} = useContext(AuthContext);
+
+    async function handleSignUp(e){
         e.preventDefault();
 
         if(name !== '' && email !== '' && password !== ''){
-            console.log(name, email, password);
+           await signUp(name,email,password);
         }else{
             alert('Preencha todos os campos!');
         }
@@ -30,7 +33,9 @@ export default function SignUp(){
                     <input type="text" placeholder="Name" value={name} onChange={(e)=>setName(e.target.value)}/>
                     <input type="text" placeholder="E-mail" value={email} onChange={(e)=>setEmail(e.target.value)}/>
                     <input type="password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
-                    <button type='submit'>Create</button>
+                    <button type='submit'>
+                        {loadingAuth ? 'Loading...' : 'Create account'}
+                    </button>
                 </form>
 
                 <Link to='/register'>Already an account ? Sign In</Link>
