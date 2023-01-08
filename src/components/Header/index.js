@@ -22,10 +22,10 @@ export default function Header(){
                 <FiUser size={25} color="#fff"/>
                 Clients
             </Link>
-            <Link to='/settings'>
+            <Link to='/profile'>
                 <FiSettings size={25} color="#fff"/>
-                Settings
-            </Link> 
+                Profile
+            </Link>
         </header>
     )
 }

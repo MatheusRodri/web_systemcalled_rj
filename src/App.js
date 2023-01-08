@@ -4,7 +4,7 @@ import AuthProvider from "./contexts/auth";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function App() {
+export default function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
@@ -25,5 +25,3 @@ function App() {
     </BrowserRouter>
   );
 }
-
-export default App;
